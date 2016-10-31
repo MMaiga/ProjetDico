@@ -1,0 +1,27 @@
+hello_My_Friends:
+    path:     /hello-Friends
+    defaults: { _controller: DICDicoBundle:Friends:index }
+
+dic_dico_home:
+    path:      /
+    defaults:  { _controller: DICDicoBundle:Advert:index }
+
+dic_dico_view:
+    path:      /word/{id}
+    defaults:  { _controller: DICDicoBundle:Advert:view }
+
+dic_dico_autocomplete:
+    path:     /autocomplete
+    defaults: { _controller: DICDicoBundle:Autocomplete:index }
+
+dic_dico_autocomplete_words:
+  path:  /ajax/autocomplete/update/data
+  defaults: { _controller: DICDicoBundle:AjaxAutocomplete:updateData }
+
+dic_dico_search:
+    path:      /search
+    defaults:  { _controller: DICDicoBundle:Search:index }
+
+dic_dico_relation:
+    path:      /relation
+    defaults:  { _controller: DICDicoBundle:Search:relation }

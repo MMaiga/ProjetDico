@@ -1,0 +1,31 @@
+{# src/DIC/DicoBundle/Resources/views/Advert/index.html.twig #}
+
+{% extends "DICDicoBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block dicdico_body %}
+
+  <div class="container" style="margin:0px auto;max-width:800px;" id="results">
+  <h1>Liste des mots les plus recherchés</h1>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+        <th>Mots</th>
+        <th>Type</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for word in words %}
+          <tr>
+          <td>{{ word['m'].name }}</td>
+          <td>{{ word['m'].typeNode }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+
+{% endblock %}

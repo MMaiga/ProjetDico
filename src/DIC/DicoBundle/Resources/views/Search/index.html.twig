@@ -1,0 +1,43 @@
+{# src/DIC/DicoBundle/Resources/views/Search/index.html.twig #}
+
+
+  <h1>Résultat trouvé pour le mot<b> {{WordInfo.name|upper}} </b></h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-11">
+      <div class="row">
+        <div class="col-xs-6 col-md-4 ">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+              <th>Definition</th>
+              </tr>
+            </thead>
+              <tbody>
+              {% for def in Definition %}
+                <tr>
+                <td>{{def|raw}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+        </table>
+      </div>
+
+
+    <div class="col-xs-6 col-md-6 ">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+            <th>Relations</th>
+            </tr>
+          </thead>
+            <tbody>
+              {{ render(controller("DICDicoBundle:Search:relation", {'q': WordInfo.name})) }}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,3 @@
+dic_dico:
+    resource: "@DICDicoBundle/Resources/config/routing.yml"
+    prefix:   /dico

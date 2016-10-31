@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}DICTIONNAIRE{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/dicdico/css/style.css') }}" type="text/css" media="all" />
+
+
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <div id="header" class="jumbotron">
+      <h1>Ma plateforme Dictionnaire</h1>
+      <p>
+      Mon Premier projet avec Symfony2 !!!
+      </p>
+    </div>
+    <div class="container">
+    	<div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control"  placeholder="Search" id="myTextField">
+                        <div id="match"></div>
+                        <span class="input-group-addon">
+                            <button type="submit" id = 'sub'>
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    </div>
+    <div class="row">
+      <div id="menu" class="col-md-2">
+        <h3>Les possibilités</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="{{ path('dic_dico_home') }}">Accueil</a></li>
+        </ul>
+
+        <h4>Les relations</h4>
+         {{ render(controller("DICDicoBundle:Advert:menu", {'limit': 10})) }}
+      </div>
+      <div id="content" class="col-md-10">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <hr>
+
+    <footer>
+      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+    </footer>
+  </div>
+  {% block javascripts %}
+  {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="{{ asset('bundles/dicdico/css/assets/js/autocomplete-Mots.js') }}"></script>
+  <script>
+    var loader = "{{ asset('bundles/dicdico/css/assets/images/loader-small.png') }}"; //link to the animated loader-small.gif
+    var ROOT_URL = "{{ url('dic_dico_home')}}"; //your root URL, used in autocomplete-countries.js file
+  </script>
+  <script>
+  function replace(val){
+    console.log(val.id);
+		document.getElementById('word').value=val.id;
+		document.getElementById("sub").click();
+		}
+  </script>
+  <script type="text/javascript">
+    $(function () {
+        function showMot(nom) {
+
+            $.get("/Mot/" + encodeURIComponent(nom),
+                    function (data) {
+                        if (!data || data.length == 0) return;
+						console.log(data);
+
+                        $("#nom").html(data.name);
+						var list = $("table#crew tbody").empty();
+                        var h = $("table#crew thead").empty();
+						//if (!data || data.length == 0) return;
+						if (data.def.length == 0) console.log('Definition vide');
+
+							else{
+								var s = ''; var c = data.def.length;
+								for(i=0;i<c;i++)
+									{s=s + data.def[i] +" ";}
+								$("<p>"+s+"</p>").appendTo($("table#results tbody"));
+							}
+						if (data.cast_associated.length == 0) console.log('idée associée vide');
+
+							else{
+								var s = ''; var c = data.cast_associated.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_associated[i]+"' >" + data.cast_associated[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>idée associée</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_raff_sem.length == 0) console.log('raffinement sémantique vide');
+							else{
+								var s = ''; var c = data.cast_raff_sem.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_associated[i]+"' >" + data.cast_raff_sem[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>raffinement sémantique</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+
+
+							if (data.cast_raff_morpho.length == 0) console.log('raffinement morphologique vide');
+							else{
+								var s = ''; var c = data.cast_raff_morpho.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_associated[i]+"' >" + data.cast_raff_morpho[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>raffinement morphologique</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_domain.length == 0) console.log('domaine vide');
+							else{
+								var s = ''; var c = data.cast_domain.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_associated[i]+"' >" + data.cast_domain[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>domaine</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_pos.length == 0) console.log('POS vide');
+							else{
+								var s = ''; var c = data.cast_pos.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='http://localhost:8080/?search='+>" + data.cast_pos[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>POS</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_syn.length == 0) console.log('synonyme vide');
+							else{
+								var s = ''; var c = data.cast_syn.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_syn[i]+"' >" + data.cast_syn[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>synonyme</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_isa.length == 0) console.log('générique vide');
+							else{
+								var s = ''; var c = data.cast_isa.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_isa[i]+"' >" + data.cast_isa[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>générique</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_anto.length == 0) console.log('contraire vide');
+							else{
+								var s = ''; var c = data.cast_anto.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_anto[i]+"' >" + data.cast_anto[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>contraire</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_hypo.length == 0) console.log('spécifique vide');
+							else{
+								var s = ''; var c = data.cast_hypo.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_hypo[i]+"' >" + data.cast_hypo[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>spécifique</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_has_part.length == 0) console.log('partie vide');
+							else{
+								var s = ''; var c = data.cast_has_part.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_has_part[i]+"' >" + data.cast_has_part[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>partie</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_holo.length == 0) console.log('tout vide');
+							else{
+								var s = ''; var c = data.cast_holo.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_holo[i]+"' >" + data.cast_holo[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>tout</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_locution.length == 0) console.log('locution vide');
+							else{
+								var s = ''; var c = data.cast_locution.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_locution[i]+"' >" + data.cast_locution[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>locution</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_flpot.length == 0) console.log('r_flpot vide');
+							else{
+								var s = ''; var c = data.cast_flpot.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_flpot[i]+"' >" + data.cast_flpot[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>ar_flpot</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_agent.length == 0) console.log('cast_agent vide');
+							else{
+								var s = ''; var c = data.cast_agent.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_agent[i]+"' >" + data.cast_agent[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>action>agent</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_patient.length == 0) console.log('action>patient vide');
+							else{
+								var s = ''; var c = data.cast_patient.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_patient[i]+"' >" + data.cast_patient[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>action>patient</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_lieu.length == 0) console.log('chose>lieu vide');
+							else{
+								var s = ''; var c = data.cast_lieu.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_lieu[i]+"' >" + data.cast_lieu[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>chose>lieu</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_instr.length == 0) console.log('action>instrument vide');
+							else{
+								var s = ''; var c = data.cast_instr.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_instr[i]+"' >" + data.cast_instr[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>action>instrument</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_carac.length == 0) console.log('caractéristique vide');
+							else{
+								var s = ''; var c = data.cast_carac.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_carac[i]+"' >" + data.cast_carac[i] + "</a>"+" ";}
+								$("<tr>caractéristique<td> </font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_data.length == 0) console.log('r_data vide');
+							else{
+								var s = ''; var c = data.cast_data.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_data[i]+"' >" + data.cast_data[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>r_data</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_lemma.length == 0) console.log('r_lemma vide');
+							else{
+								var s = ''; var c = data.cast_lemma.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_lemma[i]+"' >" + data.cast_lemma[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>r_lemma</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_magn.length == 0) console.log('magn vide');
+							else{
+								var s = ''; var c = data.cast_magn.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_magn[i]+"' >" + data.cast_magn[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>magn</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_antimagn.length == 0) console.log('antimagn vide');
+							else{
+								var s = ''; var c = data.cast_antimagn.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_antimagn[i]+"' >" + data.cast_antimagn[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>antimagn</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+
+							if (data.cast_family.length == 0) console.log('famille vide');
+							else{
+								var s = ''; var c = data.cast_family.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_family[i]+"' >" + data.cast_family[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>famille</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_carac_1.length == 0) console.log('caractéristique_1 vide');
+							else{
+								var s = ''; var c = data.cast_carac_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_carac_1[i]+"' >" + data.cast_carac_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>caractéristique_1</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_agent_1.length == 0) console.log('agent typique_1 vide');
+							else{
+								var s = ''; var c = data.cast_agent_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_agent_1[i]+"' >" + data.cast_agent_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>agent typique_1</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_instr_1.length == 0) console.log('instrument>action vide');
+							else{
+								var s = ''; var c = data.cast_instr_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_instr_1[i]+"' >" + data.cast_instr_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>instrument>action</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_patient_1.length == 0) console.log('patient_1 vide');
+							else{
+								var s = ''; var c = data.cast_patient_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_patient_1[i]+"' >" + data.cast_patient_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>patient_1</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_domain_1.length == 0) console.log('domaine_1 vide');
+							else{
+								var s = ''; var c = data.cast_domain_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_domain_1[i]+"' >" + data.cast_domain_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>domaine_1</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_lieu_1.length == 0) console.log('lieu>chose vide');
+							else{
+								var s = ''; var c = data.cast_lieu_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_lieu_1[i]+"' >" + data.cast_lieu_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>lieu>chose</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_chunk_pred.length == 0) console.log('predicat vide');
+							else{
+								var s = ''; var c = data.cast_chunk_pred.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_pred[i]+"' >" + data.cast_chunk_pred[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>predicat</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_lieu_action.length == 0) console.log('action>lieu vide');
+							else{
+								var s = ''; var c = data.cast_lieu_action.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_pred[i]+"' >" + data.cast_chunk_pred[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>action>lieu</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_action_lieu.length == 0) console.log('lieu>action vide');
+							else{
+								var s = ''; var c = data.cast_action_lieu.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_action_lieu[i]+"' >" + data.cast_action_lieu[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>lieu>action</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_sentiment.length == 0) console.log('sentiment vide');
+							else{
+								var s = ''; var c = data.cast_sentiment.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_sentiment[i]+"' >" + data.cast_sentiment[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>sentiment</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_error.length == 0) console.log('erreur vide');
+							else{
+								var s = ''; var c = data.cast_error.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_error[i]+"' >" + data.cast_error[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>erreur</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_manner.length == 0) console.log('manière vide');
+							else{
+								var s = ''; var c = data.cast_manner.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_manner[i]+"' >" + data.cast_manner[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>manière</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_meaning.length == 0) console.log('sens/signification vide');
+							else{
+								var s = ''; var c = data.cast_meaning.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_meaning[i]+"' >" + data.cast_meaning[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>sens/signification</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_infopot.length == 0) console.log('information potentielle vide');
+							else{
+								var s = ''; var c = data.cast_infopot.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_infopot[i]+"' >" + data.cast_infopot[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>information potentielle</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_telic_role.length == 0) console.log('rôle télique vide');
+							else{
+								var s = ''; var c = data.cast_telic_role.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_telic_role[i]+"' >" + data.cast_telic_role[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>rôle télique</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_agentif_role.length == 0) console.log('rôle agentif vide');
+							else{
+								var s = ''; var c = data.cast_agentif_role.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_agentif_role[i]+"' >" + data.cast_agentif_role[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>rôle agentif</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_verbe_action.length == 0) console.log('verbe>action vide');
+							else{
+								var s = ''; var c = data.cast_verbe_action.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_verbe_action[i]+"' >" + data.cast_verbe_action[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>verbe>action</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_action_verbe.length == 0) console.log('action>verbe vide');
+							else{
+								var s = ''; var c = data.cast_action_verbe.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_verbe_action[i]+"' >" + data.cast_verbe_action[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>action>verbe</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_conseq.length == 0) console.log('cause vide');
+							else{
+								var s = ''; var c = data.cast_conseq.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_conseq[i]+"' >" + data.cast_conseq[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>conséquence</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_causatif.length == 0) console.log('conséquence vide');
+							else{
+								var s = ''; var c = data.cast_causatif.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_causatif[i]+"' >" + data.cast_causatif[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cause</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+
+							if (data.cast_adj_verbe.length == 0) console.log('cast_adj_verbe vide');
+							else{
+								var s = ''; var c = data.cast_adj_verbe.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_adj_verbe[i]+"' >" + data.cast_adj_verbe[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_adj_verbe</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_verbe_adj.length == 0) console.log('cast_verbe_adj vide');
+							else{
+								var s = ''; var c = data.cast_verbe_adj.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_verbe_adj[i]+"' >" + data.cast_verbe_adj[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_verbe_adj</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_chunk_sujet.length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data.cast_chunk_sujet.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_sujet[i]+"' >" + data.cast_chunk_sujet[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_chunk_sujet</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_chunk_objet.length == 0) console.log('cast_chunk_objet vide');
+							else{
+								var s = ''; var c = data.cast_chunk_objet.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_objet[i]+"' >" + data.cast_chunk_objet[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_chunk_objet</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_chunk_loc.length == 0) console.log('cast_chunk_loc vide');
+							else{
+								var s = ''; var c = data.cast_chunk_loc.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_loc[i]+"' >" + data.cast_chunk_loc[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_chunk_loc</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_chunk_instr.length == 0) console.log('cast_chunk_instr vide');
+							else{
+								var s = ''; var c = data.cast_chunk_instr.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_instr[i]+"' >" + data.cast_chunk_instr[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_chunk_instr</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_time.length == 0) console.log('cast_time vide');
+							else{
+								var s = ''; var c = data.cast_time.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_time[i]+"' >" + data.cast_time[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_time</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+
+
+							if (data.cast_object_mater.length == 0) console.log('cast_object_mater vide');
+							else{
+								var s = ''; var c = data.cast_object_mater.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_object_mater[i]+"' >" + data.cast_object_mater[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_object_mater</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_mater_object.length == 0) console.log('cast_mater_object vide');
+							else{
+								var s = ''; var c = data.cast_mater_object.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_mater_object[i]+"' >" + data.cast_mater_object[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_mater_object</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_successeur_time.length == 0) console.log('cast_successeur_time vide');
+							else{
+								var s = ''; var c = data.cast_successeur_time.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_successeur_time[i]+"' >" + data.cast_successeur_time[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_successeur_time</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_make.length == 0) console.log('cast_make vide');
+							else{
+								var s = ''; var c = data.cast_make.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_make[i]+"' >" + data.cast_make[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_make</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_product_of.length == 0) console.log('cast_product_of vide');
+							else{
+								var s = ''; var c = data.cast_product_of.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_product_of[i]+"' >" + data.cast_product_of[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_product_of</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_against.length == 0) console.log('cast_against vide');
+							else{
+								var s = ''; var c = data.cast_against.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_against[i]+"' >" + data.cast_against[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_against</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_against_1.length == 0) console.log('cast_against_1 vide');
+							else{
+								var s = ''; var c = data.cast_against_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_against_1[i]+"' >" + data.cast_against_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_against_1</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_implication.length == 0) console.log('cast_implication vide');
+							else{
+								var s = ''; var c = data.cast_implication.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_implication[i]+"' >" + data.cast_implication[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_implication</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_quantificateur.length == 0) console.log('cast_quantificateur vide');
+							else{
+								var s = ''; var c = data.cast_quantificateur.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_quantificateur[i]+"' >" + data.cast_quantificateur[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_quantificateur</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_masc.length == 0) console.log('cast_masc vide');
+							else{
+								var s = ''; var c = data.cast_masc.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_masc[i]+"' >" + data.cast_masc[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_masc</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_fem.length == 0) console.log('cast_fem vide');
+							else{
+								var s = ''; var c = data.cast_fem.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_fem[i]+"' >" + data.cast_fem[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_fem</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_equiv.length == 0) console.log('cast_equiv vide');
+							else{
+								var s = ''; var c = data.cast_equiv.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_equiv[i]+"' >" + data.cast_equiv[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_equiv</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_manner_1.length == 0) console.log('cast_manner_1 vide');
+							else{
+								var s = ''; var c = data.cast_manner_1.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_manner_1[i]+"' >" + data.cast_manner_1[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_manner_1</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_agentive_implication.length == 0) console.log('cast_agentive_implication vide');
+							else{
+								var s = ''; var c = data.cast_agentive_implication.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_agentive_implication[i]+"' >" + data.cast_agentive_implication[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_agentive_implication</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_instance.length == 0) console.log('cast_instance vide');
+							else{
+								var s = ''; var c = data.cast_instance.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_instance[i]+"' >" + data.cast_instance[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_instance</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_verb_real.length == 0) console.log('cast_verb_real vide');
+							else{
+								var s = ''; var c = data.cast_verb_real.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_verb_real[i]+"' >" + data.cast_verb_real[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_verb_real</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_chunk_head.length == 0) console.log('cast_chunk_head vide');
+							else{
+								var s = ''; var c = data.cast_chunk_head.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_chunk_head[i]+"' >" + data.cast_chunk_head[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_chunk_head</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_similar.length == 0) console.log('cast_similar vide');
+							else{
+								var s = ''; var c = data.cast_similar.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_similar[i]+"' >" + data.cast_similar[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_similar</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_set_item.length == 0) console.log('cast_set_item vide');
+							else{
+								var s = ''; var c = data.cast_set_item.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_set_item[i]+"' >" + data.cast_set_item[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_set_item</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_item_set.length == 0) console.log('cast_item_set vide');
+							else{
+								var s = ''; var c = data.cast_item_set.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_item_set[i]+"' >" + data.cast_item_set[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_item_set</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_processus_agent.length == 0) console.log('cast_processus_agent vide');
+							else{
+								var s = ''; var c = data.cast_processus_agent.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_processus_agent[i]+"' >" + data.cast_processus_agent[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_processus_agent</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_variante.length == 0) console.log('cast_variante vide');
+							else{
+								var s = ''; var c = data.cast_variante.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_variante[i]+"' >" + data.cast_variante[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_variante</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_syn_strict.length == 0) console.log('cast_syn_strict vide');
+							else{
+								var s = ''; var c = data.cast_syn_strict.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_syn_strict[i]+"' >" + data.cast_syn_strict[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_syn_strict</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data.cast_is_smaller_than.length == 0) console.log('cast_is_smaller_than vide');
+							else{
+								var s = ''; var c = data.cast_is_smaller_than.length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.cast_is_smaller_than[i]+"' >" + data.cast_is_smaller_than[i] + "</a>"+" ";}
+								$("<tr><td><font style='text-transform: uppercase;'>cast_is_smaller_than</font></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							/*if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							if (data..length == 0) console.log(' vide');
+							else{
+								var s = ''; var c = data..length;
+								for(i=0;i<c;i++)
+									{s=s+"<a href='#' onclick='replace(this)' id='"+data.[i]+"' >" + data.[i] + "</a>"+" ";}
+								$("<tr><td></td><td>"+s+"</td></tr>").appendTo(list);
+							}
+							 */
+                      }, "json");
+            return false;
+        }
+
+
+      //  $("#search").submit(search);
+      //  search();
+    })
+</script>
+  {% endblock %}
+
+
+</body>
+</html>

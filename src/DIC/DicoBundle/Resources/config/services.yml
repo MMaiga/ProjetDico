@@ -1,0 +1,4 @@
+services:
+#    dic_dico.example:
+#        class: DIC\DicoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
