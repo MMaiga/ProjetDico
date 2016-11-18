@@ -6,12 +6,19 @@
   Accueil - {{ parent() }}
 {% endblock %}
 
+{% block menuGauche %}
+{{ parent() }}
+{% endblock %}
+
 {% block dicdico_body %}
 
-  <div class="container" style="margin:0px auto;max-width:800px;" id="results">
+
+  <div class="container" style="margin:0px auto;max-width:900px;" id="results">
+
   <h1>Liste des mots les plus recherchés</h1>
-    <table class="table table-striped table-bordered">
-      <thead>
+  <div class="panel panel-default">
+    <table class="table">
+      <thead class="thead-default">
         <tr>
         <th>Mots</th>
         <th>Type</th>
@@ -20,12 +27,13 @@
         <tbody>
         {% for word in words %}
           <tr>
-          <td>{{ word['m'].name }}</td>
+          <td><a href='#' onclick='replace(this)' id='{{ word['m'].name }}' >{{ word['m'].name }}</a></td>
           <td>{{ word['m'].typeNode }}</td>
           </tr>
         {% endfor %}
         </tbody>
     </table>
+    </div>
   </div>
 
 {% endblock %}

@@ -1,1169 +1,1169 @@
-{% if result.cast_associated %}
-<tr>
+{% if result.cast_associated.elts %}
+<tr><td>{{result.cast_associated.name}}</td>
 <td>
-{% for word in result.cast_associated %}
-{{ word }}
+{% for word in result.cast_associated.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_raff_sem %}
-<tr>
+{% if result.cast_raff_sem.elts %}
+<tr><td>{{result.cast_raff_sem.name}}</td>
 <td>
-{% for word in result.cast_raff_sem %}
-{{ word }}
+{% for word in result.cast_raff_sem.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_raff_morpho %}
-<tr>
+{% if result.cast_raff_morpho.elts %}
+<tr><td>{{result.cast_raff_sem.name}}</td>
 <td>
-{% for word in result.cast_raff_morpho %}
-{{ word }}
+{% for word in result.cast_raff_morpho.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_domain %}
-<tr>
+{% if result.cast_domain.elts %}
+<tr><td>{{result.cast_domain.name}}</td>
 <td>
-{% for word in result.cast_domain %}
-{{ word }}
+{% for word in result.cast_domain.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_pos %}
-<tr>
+{% if result.cast_pos.elts %}
+<tr><td>{{result.cast_pos.name}}</td>
 <td>
-{% for word in result.cast_pos %}
-{{ word }}
+{% for word in result.cast_pos.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_syn %}
-<tr>
+{% if result.cast_syn.elts %}
+<tr><td>{{result.cast_syn.name}}</td>
 <td>
-{% for word in result.cast_syn %}
-{{ word }}
+{% for word in result.cast_syn.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_isa %}
-<tr>
+{% if result.cast_isa.elts %}
+<tr><td>{{result.cast_isa.name}}</td>
 <td>
-{% for word in result.cast_isa %}
-{{ word }}
+{% for word in result.cast_isa.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_anto %}
-<tr>
+{% if result.cast_anto.elts %}
+<tr><td>{{result.cast_anto.name}}</td>
 <td>
-{% for word in result.cast_anto %}
-{{ word }}
+{% for word in result.cast_anto.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_hypo %}
-<tr>
+{% if result.cast_hypo.elts %}
+<tr><td>{{result.cast_hypo.name}}</td>
 <td>
-{% for word in result.cast_hypo %}
-{{ word }}
+{% for word in result.cast_hypo.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_holo %}
-<tr>
+{% if result.cast_has_part.elts %}
+<tr><td>{{result.cast_has_part.name}}</td>
 <td>
-{% for word in result.cast_has_part %}
-{{ word }}
+{% for word in result.cast_has_part.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_holo %}
-<tr>
+{% if result.cast_holo.elts %}
+<tr><td>{{result.cast_holo.name}}</td>
 <td>
-{% for word in result.cast_holo %}
-{{ word }}
+{% for word in result.cast_holo.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_locution %}
-<tr>
+{% if result.cast_locution.elts %}
+<tr><td>{{result.cast_locution.name}}</td>
 <td>
-{% for word in result.cast_locution %}
-{{ word }}
+{% for word in result.cast_locution.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_flpot %}
-<tr>
+{% if result.cast_flpot.elts %}
+<tr><td>{{result.cast_flpot.name}}</td>
 <td>
-{% for word in result.cast_flpot %}
-{{ word }}
+{% for word in result.cast_flpot.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_agent %}
-<tr>
+{% if result.cast_agent.elts %}
+<tr><td>{{result.cast_agent.name}}</td>
 <td>
-{% for word in result.cast_agent %}
-{{ word }}
+{% for word in result.cast_agent.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_patient %}
-<tr>
+{% if result.cast_patient.elts %}
+<tr><td>{{result.cast_patient.name}}</td>
 <td>
-{% for word in result.cast_patient %}
-{{ word }}
+{% for word in result.cast_patient.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_lieu %}
-<tr>
+{% if result.cast_lieu.elts %}
+<tr><td>{{result.cast_lieu.name}}</td>
 <td>
-{% for word in result.cast_lieu %}
-{{ word }}
+{% for word in result.cast_lieu.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_instr %}
-<tr>
+{% if result.cast_instr.elts %}
+<tr><td>{{result.cast_instr.name}}</td>
 <td>
-{% for word in result.cast_instr %}
-{{ word }}
+{% for word in result.cast_instr.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_carac %}
-<tr>
+{% if result.cast_carac.elts %}
+<tr><td>{{result.cast_carac.name}}</td>
 <td>
-{% for word in result.cast_carac %}
-{{ word }}
+{% for word in result.cast_carac.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_data %}
-<tr>
+{% if result.cast_data.elts %}
+<tr><td>{{result.cast_data.name}}</td>
 <td>
-{% for word in result.cast_data %}
-{{ word }}
+{% for word in result.cast_data.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_lemma %}
-<tr>
+{% if result.cast_lemma.elts %}
+<tr><td>{{result.cast_lemma.name}}</td>
 <td>
-{% for word in result.cast_lemma %}
-{{ word }}
+{% for word in result.cast_lemma.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_magn %}
-<tr>
+{% if result.cast_magn.elts %}
+<tr><td>{{result.cast_magn.name}}</td>
 <td>
-{% for word in result.cast_magn %}
-{{ word }}
+{% for word in result.cast_magn.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_antimagn %}
-<tr>
+{% if result.cast_antimagn.elts %}
+<tr><td>{{result.cast_antimagn.name}}</td>
 <td>
-{% for word in result.cast_antimagn %}
-{{ word }}
+{% for word in result.cast_antimagn.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_family %}
-<tr>
+{% if result.cast_family.elts %}
+<tr><td>{{result.cast_family.name}}</td>
 <td>
-{% for word in result.cast_family %}
-{{ word }}
+{% for word in result.cast_family.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_carac_1 %}
-<tr>
+{% if result.cast_carac_1.elts %}
+<tr><td>{{result.cast_carac_1.name}}</td>
 <td>
-{% for word in result.cast_carac_1 %}
-{{ word }}
+{% for word in result.cast_carac_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_agent_1 %}
-<tr>
+{% if result.cast_agent_1.elts %}
+<tr><td>{{result.cast_agent_1.name}}</td>
 <td>
-{% for word in result.cast_agent_1 %}
-{{ word }}
+{% for word in result.cast_agent_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_instr_1 %}
-<tr>
+{% if result.cast_instr_1.elts %}
+<tr><td>{{result.cast_instr_1.name}}</td>
 <td>
-{% for word in result.cast_instr_1 %}
-{{ word }}
+{% for word in result.cast_instr_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_patient_1 %}
-<tr>
+{% if result.cast_patient_1.elts %}
+<tr><td>{{result.cast_patient_1.name}}</td>
 <td>
-{% for word in result.cast_patient_1 %}
-{{ word }}
+{% for word in result.cast_patient_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_lieu_1 %}
-<tr>
+{% if result.cast_lieu_1.elts %}
+<tr><td>{{result.cast_lieu_1.name}}</td>
 <td>
-{% for word in result.cast_domain_1 %}
-{{ word }}
+{% for word in result.cast_domain_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_lieu_1 %}
-<tr>
+{% if result.cast_lieu_1.elts %}
+<tr><td>{{result.cast_lieu_1.name}}</td>
 <td>
-{% for word in result.cast_lieu_1 %}
-{{ word }}
+{% for word in result.cast_lieu_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_chunk_pred %}
-<tr>
+{% if result.cast_chunk_pred.elts %}
+<tr><td>{{result.cast_chunk_pred.name}}</td>
 <td>
-{% for word in result.cast_chunk_pred %}
-{{ word }}
+{% for word in result.cast_chunk_pred.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_lieu_action %}
-<tr>
+{% if result.cast_lieu_action.elts %}
+<tr><td>{{result.cast_lieu_action.name}}</td>
 <td>
-{% for word in result.cast_lieu_action %}
-{{ word }}
+{% for word in result.cast_lieu_action.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_action_lieu %}
-<tr>
+{% if result.cast_action_lieu.elts %}
+<tr><td>{{result.cast_action_lieu.name}}</td>
 <td>
-{% for word in result.cast_action_lieu %}
-{{ word }}
+{% for word in result.cast_action_lieu.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_sentiment %}
-<tr>
+{% if result.cast_sentiment.elts %}
+<tr><td>{{result.cast_sentiment.name}}</td>
 <td>
-{% for word in result.cast_sentiment %}
-{{ word }}
+{% for word in result.cast_sentiment.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_error %}
-<tr>
+{% if result.cast_error.elts %}
+<tr><td>{{result.cast_error.name}}</td>
 <td>
-{% for word in result.cast_error %}
-{{ word }}
+{% for word in result.cast_error.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_manner %}
-<tr>
+{% if result.cast_manner.elts %}
+<tr><td>{{result.cast_manner.name}}</td>
 <td>
-{% for word in result.cast_manner %}
-{{ word }}
+{% for word in result.cast_manner.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_meaning %}
-<tr>
+{% if result.cast_meaning.elts %}
+<tr><td>{{result.cast_meaning.name}}</td>
 <td>
-{% for word in result.cast_meaning %}
-{{ word }}
+{% for word in result.cast_meaning.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_infopot %}
-<tr>
+{% if result.cast_infopot.elts %}
+<tr><td>{{result.cast_infopot.name}}</td>
 <td>
-{% for word in result.cast_infopot %}
-{{ word }}
+{% for word in result.cast_infopot.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_telic_role %}
-<tr>
+{% if result.cast_telic_role.elts %}
+<tr><td>{{result.cast_telic_role.name}}</td>
 <td>
-{% for word in result.cast_telic_role %}
-{{ word }}
+{% for word in result.cast_telic_role.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_agentif_role %}
-<tr>
+{% if result.cast_agentif_role.elts %}
+<tr><td>{{result.cast_agentif_role.name}}</td>
 <td>
-{% for word in result.cast_agentif_role %}
-{{ word }}
+{% for word in result.cast_agentif_role.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_verbe_action %}
-<tr>
+{% if result.cast_verbe_action.elts %}
+<tr><td>{{result.cast_verbe_action.name}}</td>
 <td>
-{% for word in result.cast_verbe_action %}
-{{ word }}
+{% for word in result.cast_verbe_action.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_action_verbe %}
-<tr>
+{% if result.cast_action_verbe.elts %}
+<tr><td>{{result.cast_action_verbe.name}}</td>
 <td>
-{% for word in result.cast_action_verbe %}
-{{ word }}
+{% for word in result.cast_action_verbe.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_conseq %}
-<tr>
+{% if result.cast_conseq.elts %}
+<tr><td>{{result.cast_conseq.name}}</td>
 <td>
-{% for word in result.cast_conseq %}
-{{ word }}
+{% for word in result.cast_conseq.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_causatif %}
-<tr>
+{% if result.cast_causatif.elts %}
+<tr><td>{{result.cast_causatif.name}}</td>
 <td>
-{% for word in result.cast_causatif %}
-{{ word }}
+{% for word in result.cast_causatif.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_adj_verbe %}
-<tr>
+{% if result.cast_adj_verbe.elts %}
+<tr><td>{{result.cast_adj_verbe.name}}</td>
 <td>
-{% for word in result.cast_adj_verbe %}
-{{ word }}
+{% for word in result.cast_adj_verbe.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_verbe_adj %}
-<tr>
+{% if result.cast_verbe_adj.elts %}
+<tr><td>{{result.cast_verbe_adj.name}}</td>
 <td>
-{% for word in result.cast_verbe_adj %}
-{{ word }}
+{% for word in result.cast_verbe_adj.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_chunk_sujet %}
-<tr>
+{% if result.cast_chunk_sujet.elts %}
+<tr><td>{{result.cast_chunk_sujet.name}}</td>
 <td>
-{% for word in result.cast_chunk_sujet %}
-{{ word }}
+{% for word in result.cast_chunk_sujet.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_chunk_objet %}
-<tr>
+{% if result.cast_chunk_objet.elts %}
+<tr><td>{{result.cast_chunk_objet.name}}</td>
 <td>
-{% for word in result.cast_chunk_objet %}
-{{ word }}
+{% for word in result.cast_chunk_objet.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_chunk_loc %}
-<tr>
+{% if result.cast_chunk_loc.elts %}
+<tr><td>{{result.cast_chunk_loc.name}}</td>
 <td>
-{% for word in result.cast_chunk_loc %}
-{{ word }}
+{% for word in result.cast_chunk_loc.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_chunk_instr %}
-<tr>
+{% if result.cast_chunk_instr.elts %}
+<tr><td>{{result.cast_chunk_instr.name}}</td>
 <td>
-{% for word in result.cast_chunk_instr %}
-{{ word }}
+{% for word in result.cast_chunk_instr.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_time %}
-<tr>
+{% if result.cast_time.elts %}
+<tr><td>{{result.cast_time.name}}</td>
 <td>
-{% for word in result.cast_time %}
-{{ word }}
+{% for word in result.cast_time.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_object_mater %}
-<tr>
+{% if result.cast_object_mater.elts %}
+<tr><td>{{result.cast_object_mater.name}}</td>
 <td>
-{% for word in result.cast_object_mater %}
-{{ word }}
+{% for word in result.cast_object_mater.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_mater_object %}
-<tr>
+{% if result.cast_mater_object.elts %}
+<tr><td>{{result.cast_mater_object.name}}</td>
 <td>
-{% for word in result.cast_mater_object %}
-{{ word }}
+{% for word in result.cast_mater_object.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_successeur_time %}
-<tr>
+{% if result.cast_successeur_time.elts %}
+<tr><td>{{result.cast_successeur_time.name}}</td>
 <td>
-{% for word in result.cast_successeur_time %}
-{{ word }}
+{% for word in result.cast_successeur_time.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_make %}
-<tr>
+{% if result.cast_make.elts %}
+<tr><td>{{result.cast_make.name}}</td>
 <td>
-{% for word in result.cast_make %}
-{{ word }}
+{% for word in result.cast_make.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_product_of %}
-<tr>
+{% if result.cast_product_of.elts %}
+<tr><td>{{result.cast_product_of.name}}</td>
 <td>
-{% for word in result.cast_product_of %}
-{{ word }}
+{% for word in result.cast_product_of.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_against %}
-<tr>
+{% if result.cast_against.elts %}
+<tr><td>{{result.cast_against.name}}</td>
 <td>
-{% for word in result.cast_against %}
-{{ word }}
+{% for word in result.cast_against.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_against_1 %}
-<tr>
+{% if result.cast_against_1.elts %}
+<tr><td>{{result.cast_against_1.name}}</td>
 <td>
-{% for word in result.cast_against_1 %}
-{{ word }}
+{% for word in result.cast_against_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_implication %}
-<tr>
+{% if result.cast_implication.elts %}
+<tr><td>{{result.cast_implication.name}}</td>
 <td>
-{% for word in result.cast_implication %}
-{{ word }}
+{% for word in result.cast_implication.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_quantificateur %}
-<tr>
+{% if result.cast_quantificateur.elts %}
+<tr><td>{{result.cast_quantificateur.name}}</td>
 <td>
-{% for word in result.cast_quantificateur %}
-{{ word }}
+{% for word in result.cast_quantificateur.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_masc %}
-<tr>
+{% if result.cast_masc.elts %}
+<tr><td>{{result.cast_masc.name}}</td>
 <td>
-{% for word in result.cast_masc %}
-{{ word }}
+{% for word in result.cast_masc.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_fem %}
-<tr>
+{% if result.cast_fem.elts %}
+<tr><td>{{result.cast_fem.name}}</td>
 <td>
-{% for word in result.cast_fem %}
-{{ word }}
+{% for word in result.cast_fem.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_equiv %}
-<tr>
+{% if result.cast_equiv.elts %}
+<tr><td>{{result.cast_equiv.name}}</td>
 <td>
-{% for word in result.cast_equiv %}
-{{ word }}
+{% for word in result.cast_equiv.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_manner_1 %}
-<tr>
+{% if result.cast_manner_1.elts %}
+<tr><td>{{result.cast_manner_1.name}}</td>
 <td>
-{% for word in result.cast_manner_1 %}
-{{ word }}
+{% for word in result.cast_manner_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_agentive_implication %}
-<tr>
+{% if result.cast_agentive_implication.elts %}
+<tr><td>{{result.cast_agentive_implication.name}}</td>
 <td>
-{% for word in result.cast_agentive_implication %}
-{{ word }}
+{% for word in result.cast_agentive_implication.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_instance %}
-<tr>
+{% if result.cast_instance.elts %}
+<tr><td>{{result.cast_instance.name}}</td>
 <td>
-{% for word in result.cast_instance %}
-{{ word }}
+{% for word in result.cast_instance.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_verb_real %}
-<tr>
+{% if result.cast_verb_real.elts %}
+<tr><td>{{result.cast_verb_real.name}}</td>
 <td>
-{% for word in result.cast_verb_real %}
-{{ word }}
+{% for word in result.cast_verb_real.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_chunk_head %}
-<tr>
+{% if result.cast_chunk_head.elts %}
+<tr><td>{{result.cast_chunk_head.name}}</td>
 <td>
-{% for word in result.cast_chunk_head %}
-{{ word }}
+{% for word in result.cast_chunk_head.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_similar %}
-<tr>
+{% if result.cast_similar.elts %}
+<tr><td>{{result.cast_similar.name}}</td>
 <td>
-{% for word in result.cast_similar %}
-{{ word }}
+{% for word in result.cast_similar.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_set_item %}
-<tr>
+{% if result.cast_set_item.elts %}
+<tr><td>{{result.cast_set_item.name}}</td>
 <td>
-{% for word in result.cast_set_item %}
-{{ word }}
+{% for word in result.cast_set_item.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_item_set %}
-<tr>
+{% if result.cast_item_set.elts %}
+<tr><td>{{result.cast_item_set.name}}</td>
 <td>
-{% for word in result.cast_item_set %}
-{{ word }}
+{% for word in result.cast_item_set.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_processus_agent %}
-<tr>
+{% if result.cast_processus_agent.elts %}
+<tr><td>{{result.cast_processus_agent.name}}</td>
 <td>
-{% for word in result.cast_processus_agent %}
-{{ word }}
+{% for word in result.cast_processus_agent.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_variante %}
-<tr>
+{% if result.cast_variante.elts %}
+<tr><td>{{result.cast_variante.name}}</td>
 <td>
-{% for word in result.cast_variante %}
-{{ word }}
+{% for word in result.cast_variante.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_syn_strict %}
-<tr>
+{% if result.cast_syn_strict.elts %}
+<tr><td>{{result.cast_syn_strict.name}}</td>
 <td>
-{% for word in result.cast_syn_strict %}
-{{ word }}
+{% for word in result.cast_syn_strict.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_is_smaller_than %}
-<tr>
+{% if result.cast_is_smaller_than.elts %}
+<tr><td>{{result.cast_is_smaller_than.name}}</td>
 <td>
-{% for word in result.cast_is_smaller_than %}
-{{ word }}
+{% for word in result.cast_is_smaller_than.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_is_bigger_than %}
-<tr>
+{% if result.cast_is_bigger_than.elts %}
+<tr><td>{{result.cast_is_bigger_than.name}}</td>
 <td>
-{% for word in result.cast_is_bigger_than %}
-{{ word }}
+{% for word in result.cast_is_bigger_than.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_accomp %}
-<tr>
+{% if result.cast_accomp.elts %}
+<tr><td>{{result.cast_accomp.name}}</td>
 <td>
-{% for word in result.cast_accomp %}
-{{ word }}
+{% for word in result.cast_accomp.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_processus_patient %}
-<tr>
+{% if result.cast_processus_patient.elts %}
+<tr><td>{{result.cast_processus_patient.name}}</td>
 <td>
-{% for word in result.cast_processus_patient %}
-{{ word }}
+{% for word in result.cast_processus_patient.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_verb_ppas %}
-<tr>
+{% if result.cast_verb_ppas.elts %}
+<tr><td>{{result.cast_verb_ppas.name}}</td>
 <td>
-{% for word in result.cast_verb_ppas %}
-{{ word }}
+{% for word in result.cast_verb_ppas.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_cohypo %}
-<tr>
+{% if result.cast_cohypo.elts %}
+<tr><td>{{result.cast_cohypo.name}}</td>
 <td>
-{% for word in result.cast_cohypo %}
-{{ word }}
+{% for word in result.cast_cohypo.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_der_morpho %}
-<tr>
+{% if result.cast_der_morpho.elts %}
+<tr><td>{{result.cast_der_morpho.name}}</td>
 <td>
-{% for word in result.cast_der_morpho %}
-{{ word }}
+{% for word in result.cast_der_morpho.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_has_auteur %}
-<tr>
+{% if result.cast_has_auteur.elts %}
+<tr><td>{{result.cast_has_auteur.name}}</td>
 <td>
-{% for word in result.cast_has_auteur %}
-{{ word }}
+{% for word in result.cast_has_auteur.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_has_personnage %}
-<tr>
+{% if result.cast_has_personnage.elts %}
+<tr><td>{{result.cast_has_personnage.name}}</td>
 <td>
-{% for word in result.cast_has_personnage %}
-{{ word }}
+{% for word in result.cast_has_personnage.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_can_eat %}
-<tr>
+{% if result.cast_can_eat.elts %}
+<tr><td>{{result.cast_can_eat.name}}</td>
 <td>
-{% for word in result.cast_can_eat %}
-{{ word }}
+{% for word in result.cast_can_eat.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_has_actors %}
-<tr>
+{% if result.cast_has_actors.elts %}
+<tr><td>{{result.cast_has_actors.name}}</td>
 <td>
-{% for word in result.cast_has_actors %}
-{{ word }}
+{% for word in result.cast_has_actors.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_deplac_mode %}
-<tr>
+{% if result.cast_deplac_mode.elts %}
+<tr><td>{{result.cast_deplac_mode.name}}</td>
 <td>
-{% for word in result.cast_deplac_mode %}
-{{ word }}
+{% for word in result.cast_deplac_mode.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_has_interpret %}
-<tr>
+{% if result.cast_has_interpret.elts %}
+<tr><td>{{result.cast_has_interpret.name}}</td>
 <td>
-{% for word in result.cast_has_interpret %}
-{{ word }}
+{% for word in result.cast_has_interpret.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_color %}
-<tr>
+{% if result.cast_color.elts %}
+<tr><td>{{result.cast_color.name}}</td>
 <td>
-{% for word in result.cast_color %}
-{{ word }}
+{% for word in result.cast_color.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_cible %}
-<tr>
+{% if result.cast_cible.elts %}
+<tr><td>{{result.cast_cible.name}}</td>
 <td>
-{% for word in result.cast_cible %}
-{{ word }}
+{% for word in result.cast_cible.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_symptomes %}
-<tr>
+{% if result.cast_symptomes.elts %}
+<tr><td>{{result.cast_symptomes.name}}</td>
 <td>
-{% for word in result.cast_symptomes %}
-{{ word }}
+{% for word in result.cast_symptomes.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_predecesseur_time %}
-<tr>
+{% if result.cast_predecesseur_time.elts %}
+<tr><td>{{result.cast_predecesseur_time.name}}</td>
 <td>
-{% for word in result.cast_predecesseur_time %}
-{{ word }}
+{% for word in result.cast_predecesseur_time.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_diagnostique %}
-<tr>
+{% if result.cast_diagnostique.elts %}
+<tr><td>{{result.cast_diagnostique.name}}</td>
 <td>
-{% for word in result.cast_diagnostique %}
-{{ word }}
+{% for word in result.cast_diagnostique.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_predecesseur_space %}
-<tr>
+{% if result.cast_predecesseur_space.elts %}
+<tr><td>{{result.cast_predecesseur_space.name}}</td>
 <td>
-{% for word in result.cast_predecesseur_space %}
-{{ word }}
+{% for word in result.cast_predecesseur_space.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_successeur_space %}
-<tr>
+{% if result.cast_successeur_space.elts %}
+<tr><td>{{result.cast_successeur_space.name}}</td>
 <td>
-{% for word in result.cast_successeur_space %}
-{{ word }}
+{% for word in result.cast_successeur_space.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_social_tie %}
-<tr>
+{% if result.cast_social_tie.elts %}
+<tr><td>{{result.cast_social_tie.name}}</td>
 <td>
-{% for word in result.cast_social_tie %}
-{{ word }}
+{% for word in result.cast_social_tie.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_tributary %}
-<tr>
+{% if result.cast_tributary.elts %}
+<tr><td>{{result.cast_tributary.name}}</td>
 <td>
-{% for word in result.cast_tributary %}
-{{ word }}
+{% for word in result.cast_tributary.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_sentiment_1 %}
-<tr>
+{% if result.cast_sentiment_1.elts %}
+<tr><td>{{result.cast_sentiment_1.name}}</td>
 <td>
-{% for word in result.cast_sentiment_1 %}
-{{ word }}
+{% for word in result.cast_sentiment_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_linked_with %}
-<tr>
+{% if result.cast_linked_with.elts %}
+<tr><td>{{result.cast_linked_with.name}}</td>
 <td>
-{% for word in result.cast_linked_with %}
-{{ word }}
+{% for word in result.cast_linked_with.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_foncteur %}
-<tr>
+{% if result.cast_foncteur.elts %}
+<tr><td>{{result.cast_foncteur.name}}</td>
 <td>
-{% for word in result.cast_foncteur %}
-{{ word }}
+{% for word in result.cast_foncteur.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_comparison %}
-<tr>
+{% if result.cast_comparison.elts %}
+<tr><td>{{result.cast_comparison.name}}</td>
 <td>
-{% for word in result.cast_comparison %}
-{{ word }}
+{% for word in result.cast_comparison.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_but %}
-<tr>
+{% if result.cast_but.elts %}
+<tr><td>{{result.cast_but.name}}</td>
 <td>
-{% for word in result.cast_but %}
-{{ word }}
+{% for word in result.cast_but.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_but_1 %}
-<tr>
+{% if result.cast_but_1.elts %}
+<tr><td>{{result.cast_but_1.name}}</td>
 <td>
-{% for word in result.cast_but_1 %}
-{{ word }}
+{% for word in result.cast_but_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_own %}
-<tr>
+{% if result.cast_own.elts %}
+<tr><td>{{result.cast_own.name}}</td>
 <td>
-{% for word in result.cast_own %}
-{{ word }}
+{% for word in result.cast_own.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_own_1 %}
-<tr>
+{% if result.cast_own_1.elts %}
+<tr><td>{{result.cast_own_1.name}}</td>
 <td>
-{% for word in result.cast_own_1 %}
-{{ word }}
+{% for word in result.cast_own_1.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_verb_aux %}
-<tr>
+{% if result.cast_verb_aux.elts %}
+<tr><td>{{result.cast_verb_aux.name}}</td>
 <td>
-{% for word in result.cast_verb_aux %}
-{{ word }}
+{% for word in result.cast_verb_aux.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_predecesseur_logic %}
-<tr>
+{% if result.cast_predecesseur_logic.elts %}
+<tr><td>{{result.cast_predecesseur_logic.name}}</td>
 <td>
-{% for word in result.cast_predecesseur_logic %}
-{{ word }}
+{% for word in result.cast_predecesseur_logic.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_successeur_logic %}
-<tr>
+{% if result.cast_successeur_logic.elts %}
+<tr><td>{{result.cast_successeur_logic.name}}</td>
 <td>
-{% for word in result.cast_successeur_logic %}
-{{ word }}
+{% for word in result.cast_successeur_logic.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_isa_incompatible %}
-<tr>
+{% if result.cast_isa_incompatible.elts %}
+<tr><td>{{result.cast_isa_incompatible.name}}</td>
 <td>
-{% for word in result.cast_isa_incompatible %}
-{{ word }}
+{% for word in result.cast_isa_incompatible.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_compl_agent %}
-<tr>
+{% if result.cast_compl_agent.elts %}
+<tr><td>{{result.cast_compl_agent.name}}</td>
 <td>
-{% for word in result.cast_compl_agent %}
-{{ word }}
+{% for word in result.cast_compl_agent.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_beneficiaire %}
-<tr>
+{% if result.cast_beneficiaire.elts %}
+<tr><td>{{result.cast_beneficiaire.name}}</td>
 <td>
-{% for word in result.cast_beneficiaire %}
-{{ word }}
+{% for word in result.cast_beneficiaire.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_descend_de %}
-<tr>
+{% if result.cast_descend_de.elts %}
+<tr><td>{{result.cast_descend_de.name}}</td>
 <td>
-{% for word in result.cast_descend_de %}
-{{ word }}
+{% for word in result.cast_descend_de.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_domain_subst %}
-<tr>
+{% if result.cast_domain_subst.elts %}
+<tr><td>{{result.cast_domain_subst.name}}</td>
 <td>
-{% for word in result.cast_domain_subst %}
-{{ word }}
+{% for word in result.cast_domain_subst.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_prop %}
-<tr>
+{% if result.cast_prop.elts %}
+<tr><td>{{result.cast_prop.name}}</td>
 <td>
-{% for word in result.cast_prop %}
-{{ word }}
+{% for word in result.cast_prop.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_activ_voice %}
-<tr>
+{% if result.cast_activ_voice.elts %}
+<tr><td>{{result.cast_activ_voice.name}}</td>
 <td>
-{% for word in result.cast_activ_voice %}
-{{ word }}
+{% for word in result.cast_activ_voice.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_make_use_of %}
-<tr>
+{% if result.cast_make_use_of.elts %}
+<tr><td>{{result.cast_make_use_of.name}}</td>
 <td>
-{% for word in result.cast_make_use_of %}
-{{ word }}
+{% for word in result.cast_make_use_of.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_is_used_by %}
-<tr>
+{% if result.cast_is_used_by.elts %}
+<tr><td>{{result.cast_is_used_by.name}}</td>
 <td>
-{% for word in result.cast_is_used_by %}
-{{ word }}
+{% for word in result.cast_is_used_by.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_adj_nomprop %}
-<tr>
+{% if result.cast_adj_nomprop.elts %}
+<tr><td>{{result.cast_adj_nomprop.name}}</td>
 <td>
-{% for word in result.cast_adj_nomprop %}
-{{ word }}
+{% for word in result.cast_adj_nomprop.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_nomprop_adj %}
-<tr>
+{% if result.cast_nomprop_adj.elts %}
+<tr><td>{{result.cast_nomprop_adj.name}}</td>
 <td>
-{% for word in result.cast_nomprop_adj %}
-{{ word }}
+{% for word in result.cast_nomprop_adj.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_adj_adv %}
-<tr>
+{% if result.cast_adj_adv.elts %}
+<tr><td>{{result.cast_adj_adv.name}}</td>
 <td>
-{% for word in result.cast_adj_adv %}
-{{ word }}
+{% for word in result.cast_adj_adv.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_adv_adj %}
-<tr>
+{% if result.cast_adv_adj.elts %}
+<tr><td>{{result.cast_adv_adj.name}}</td>
 <td>
-{% for word in result.cast_adv_adj %}
-{{ word }}
+{% for word in result.cast_adv_adj.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_link %}
-<tr>
+{% if result.cast_link.elts %}
+<tr><td>{{result.cast_link.name}}</td>
 <td>
-{% for word in result.cast_link %}
-{{ word }}
+{% for word in result.cast_link.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_cooccurrence %}
-<tr>
+{% if result.cast_cooccurrence.elts %}
+<tr><td>{{result.cast_cooccurrence.name}}</td>
 <td>
-{% for word in result.cast_cooccurrence %}
-{{ word }}
+{% for word in result.cast_cooccurrence.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_aki %}
-<tr>
+{% if result.cast_aki.elts %}
+<tr><td>{{result.cast_aki.name}}</td>
 <td>
-{% for word in result.cast_aki %}
-{{ word }}
+{% for word in result.cast_aki.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_wiki %}
-<tr>
+{% if result.cast_wiki.elts %}
+<tr><td>{{result.cast_wiki.name}}</td>
 <td>
-{% for word in result.cast_wiki %}
-{{ word }}
+{% for word in result.cast_wiki.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_annotation_exception %}
-<tr>
+{% if result.cast_annotation_exception.elts %}
+<tr><td>{{result.cast_annotation_exception.name}}</td>
 <td>
-{% for word in result.cast_annotation_exception %}
-{{ word }}
+{% for word in result.cast_annotation_exception.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_annotation %}
-<tr>
+{% if result.cast_annotation.elts %}
+<tr><td>{{result.cast_annotation.name}}</td>
 <td>
-{% for word in result.cast_annotation %}
-{{ word }}
+{% for word in result.cast_annotation.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_inhib %}
-<tr>
+{% if result.cast_inhib.elts %}
+<tr><td>{{result.cast_inhib.name}}</td>
 <td>
-{% for word in result.cast_inhib %}
-{{ word }}
+{% for word in result.cast_inhib.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_prev %}
-<tr>
+{% if result.cast_prev.elts %}
+<tr><td>{{result.cast_prev.name}}</td>
 <td>
-{% for word in result.cast_prev %}
-{{ word }}
+{% for word in result.cast_prev.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_associated %}
-<tr>
+{% if result.cast_associated.elts %}
+<tr><td>{{result.cast_associated.name}}</td>
 <td>
-{% for word in result.cast_succ %}
-{{ word }}
+{% for word in result.cast_succ.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_termgroup %}
-<tr>
+{% if result.cast_termgroup.elts %}
+<tr><td>{{result.cast_termgroup.name}}</td>
 <td>
-{% for word in result.cast_termgroup %}
-{{ word }}
+{% for word in result.cast_termgroup.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>
 {% endif %}
-{% if result.cast_learning_model %}
-<tr>
+{% if result.cast_learning_model.elts %}
+<tr><td>{{result.cast_learning_model.name}}</td>
 <td>
-{% for word in result.cast_learning_model %}
-{{ word }}
+{% for word in result.cast_learning_model.elts %}
+<a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
 {% endfor %}
 </td>
 </tr>

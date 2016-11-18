@@ -1,0 +1,22 @@
+{# src/DIC/DicoBundle/Resources/views/Advert/types.html.twig #}
+
+  <h1>Liste des mots les plus recherchés</h1>
+  <div class="panel panel-default">
+    <table class="table">
+      <thead class="thead-default">
+        <tr>
+        <th>Nom</th>
+        <th>Definition</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for word in words %}
+          <tr>
+          <td>{{ $types.name }}</td>
+          <td>{{ $types.definition }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  

@@ -36,14 +36,17 @@ Tags: light, white,blog,business,multipurpose,one page, single page, custom-colo
 /*--------------------*/
 
 body,html{
+
   	overflow-x:hidden;
 }
 body {
+  background-image: url("assets/images/background1.jpg") no-repeat;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	overflow-x: hidden !important;
 	color: #838282;
 }
+
 ul{
 	padding: 0;
 	margin: 0;
@@ -536,6 +539,7 @@ padding:2px;
     border:0;
     background:transparent;
 }
+
 /*--------------------*/
 /* Autocompletion */
 /*--------------------*/
@@ -558,6 +562,18 @@ padding:2px;
 	display: none;
 }
 
+.truncate-ellipsis {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.truncate-ellipsis > * {
+    display: table-cell;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /*--------------------*/
 /* ABOUT */

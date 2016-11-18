@@ -9,7 +9,7 @@ $(document).ready(function(){
                              url: ROOT_URL + "ajax/autocomplete/update/data", // call the php file ajax/tuto-autocomplete.php (check the routine we defined)
                              data: data, // Send dataFields var
                              dataType: 'json', // json method
-                             timeout: 3000,
+                            // timeout: 8000,
                              success: function(response){ // If success
                                      $('#match').html(response.wordList); // Return data (UL list) and insert it in the <div id="match"></div>
                                      $('#matchList li').on('click', function() { // When click on an element in the list
@@ -20,7 +20,7 @@ $(document).ready(function(){
                                      });
                              },
                              error: function(data, errorThrown) { // if error
-                                     $('#match').text('problem !!!');
+                                     $('#match').text(errorThrown);
                              }
                      });
              } else {
@@ -28,6 +28,7 @@ $(document).ready(function(){
              }
      });
  });
+
  function search() {
 
     var query=$("#myTextField").val();
@@ -37,36 +38,70 @@ $(document).ready(function(){
                     type: "POST",
                     url: ROOT_URL + "search", // call the php file ajax/tuto-autocomplete.php (check the routine we defined)
                     data: data, // Send dataFields var
-                    timeout: 5000,
+                  //  timeout: 8000,
+                    success: function(response){ // If success
+                            console.log(response);
+                            $('#resultats').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
+
+                    },
+                    error: function(data, errorThrown) { // if error
+                            console.log(errorThrown);
+                            $('#resultats').text(errorThrown);
+                    }
+            });
+
+ }
+
+
+ function Relation() {
+
+            $.ajax({
+                    type: "POST",
+                    url: ROOT_URL + "relations",
                     success: function(response){ // If success
                             console.log(response);
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
 
                     },
                     error: function(data, errorThrown) { // if error
-                            console.log('problem !');
-                            $('#results').text('problem !');
+                            console.log(errorThrown);
+                            $('#results').text(errorThrown);
                     }
             });
 
-
-  /*  $.get(ROOT_URL + "/search?q=" + encodeURIComponent(query),
-            function (data) {
-                var t = $("table#results tbody").empty();
-                if (!data || data.length == 0) return;
-                      console.log(data);
-                      data.forEach(function (row) {
-
-                    var Mot = row.Word;
-      if(Mot.nf == ""){
-        $('#WordDiv').html("<font style='text-transform: uppercase;'><b>"+Mot.name+"</b></font>");
-      }
-      else{
-        $('#WordDiv').html("<font style='text-transform: uppercase;'><b>"+Mot.nf+"</b></font>");
-      }
-                });
-
-                showMot(data[0].Word.name);
-            }, "json");
-    return false;*/
  }
+
+ function Type() {
+
+            $.ajax({
+                    type: "POST",
+                    url: ROOT_URL + "types",
+                    success: function(response){ // If success
+                            console.log(response);
+                            $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
+
+                    },
+                    error: function(data, errorThrown) { // if error
+                            console.log(errorThrown);
+                            $('#results').text(errorThrown);
+                    }
+            });
+
+ }
+
+ function replace(val){
+       document.getElementById('myTextField').value=val.id;
+       //document.getElementById("sub").click();
+       search();
+   }
+
+$("input[type='checkbox']").on('click', function(){
+  var checked = $(this).attr('checked');
+          if (checked) {
+            console.log('checked');
+           alert('checked');
+         } else {
+           console.log('unchecked');
+           alert('unchecked');
+       }
+   });

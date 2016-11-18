@@ -19,7 +19,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "everyman/neo4jphp": "dev-master",
         "hirevoice/neo4jphp-ogm": "dev-master",
-        "klaussilveira/neo4j-ogm-bundle": "dev-master"
+        "klaussilveira/neo4j-ogm-bundle": "dev-master",
+        "twig/extensions": "^1.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

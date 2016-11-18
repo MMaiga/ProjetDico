@@ -86,3 +86,10 @@ neo4j_ogm:
     username: 'neo4j'
     password: 'aminata200'
     debug: true
+
+# truncate
+services:
+ twig.extension.text:
+     class: Twig_Extensions_Extension_Text
+     tags:
+         - { name: twig.extension }

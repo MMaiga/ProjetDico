@@ -25,3 +25,11 @@ dic_dico_search:
 dic_dico_relation:
     path:      /relation
     defaults:  { _controller: DICDicoBundle:Search:relation }
+
+dic_dico_relations:
+    path:      /relations
+    defaults:  { _controller: DICDicoBundle:Advert:relations }
+
+dic_dico_types:
+    path:      /types
+    defaults:  { _controller: DICDicoBundle:Advert:types }

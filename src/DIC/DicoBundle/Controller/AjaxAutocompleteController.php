@@ -24,7 +24,7 @@ class AjaxAutocompleteController extends Controller
         $wordList = '<ul id="matchList">';
         foreach ($words as $result) {
             $matchStringBold =$result['m']->getproperty('name'); // Replace text field input by bold one
-            $wordList .= '<li id="'.$result['m']->getproperty('name').'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
+            $wordList .= '<li style="color: #FFFFFF;" id="'.$result['m']->getproperty('name').'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
         }
         $wordList .= '</ul>';
 
