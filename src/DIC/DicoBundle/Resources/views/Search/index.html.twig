@@ -1,82 +1,62 @@
 {# src/DIC/DicoBundle/Resources/views/Search/index.html.twig #}
 
-  <h1><center>Résultat trouvé pour le mot<b> {{WordInfo.name|upper}} </b></center></h1>
+ 
+  <h2><center>Résultat trouvé pour le mot<b> {{WordInfo.name|upper}} </b></center></h2>
 
-      <div class="row">
-      <div class="container" style="margin:0px auto;max-width:900px;"  >
-        <div class="panel panel-default">
-          <table class="table ">
-            <thead class="thead-inverse">
-              <tr>
-              <th>Definition</th>
-              </tr>
-            </thead>
-              <tbody>
-              {% for def in Definition %}
-                <tr>
-                <td>{{def|truncate(100, true, '[..]') |raw}}</td>
-                </tr>
-              {% endfor %}
-              </tbody>
-        </table>
-        </div>
-        </div>
+      
+
+<div id="menu"  class="container spacer about">
+    <div class="row">
+      <div class="col-sm-6 wowload fadeInLeft">
+        <h4><i class="fa fa-pencil-square-o"></i> Definition </h4>
+        {% if Definition %}
+                {% for def in Definition %}
+                  <p>{{def|truncate(200, true, '[..]') |raw}}</p>
+                {% endfor %}
+              {% else %}
+                <p><b>Aucune définition correspondante au mot/expression {{WordInfo.name|upper}} </b></p>
+              {% endif %}
+        
+
       </div>
+      <div class="col-sm-4 wowload fadeInRight">
+        
+         <h4><i class="fa fa-bars"></i> Relations</h4>
 
+          <!-- menus -->
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-  <div class="row">
-  <div class="container" style="margin:0px auto;max-width:900px;" >
-    <div class="panel panel-default">
-        <table class="table table-striped">
-          <thead class="thead-inverse">
-            <tr>
-            <th>Relations</th>
-            </tr>
-          </thead>
-            <tbody>
-              {% for relation in result %}
-                  {% if relation.eltsFound %}
-                    <tr>
-                    <td>
-                    <a href="#"  data-toggle="modal" data-target="#{{relation.name|replace({' ':'-','>':'-'})}}">{{relation.name}}</a>
-                    <!-- <input type="checkbox"  checked="checked" class="icheck">{{relation.name}} -->
-                    <!-- Modal -->
-                      <div class="modal fade" id="{{relation.name|replace({' ':'-','>':'-'})}}" role="dialog">
-                        <div class="modal-dialog">
+          {% for relation in result %}
+            {% if relation.eltsFound %}
 
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">{{relation.name|upper}}</h4>
-                            </div>
-                            <div class="modal-body">
-                              {% if relation.name != 'raffinement sémantique' %}
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#{{relation.name|replace({' ':'-','>':'-','/':'-'})}}" aria-expanded="true" aria-controls="{{relation.name|replace({' ':'-','>':'-','/':'-'})}}">
+             <i class="fa fa-folder"></i> {{relation.name}}
+            </a>
+          </h4>
+        </div>
+        <div id="{{relation.name|replace({' ':'-','>':'-','/':'-'})}}" class="panel-collapse collapse" role="tabpanel">
+          <div class="panel-body">
+            <div >
                                 {% for word in relation.eltsFound %}
                                     <a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
                                 {% endfor %}
-                              {% else %}
-                                  {% for word in relation.eltsFound %}
-                                    <a href='#' onclick='replace(this)' id='{{ word }}' >
-                                      {{ word |slice(0, (WordInfo.name|length)) }}({{ word |slice((WordInfo.name|length + 1), (word|length)) }})</a>
-                                  {% endfor %}
-                              {% endif %}
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </td>
-                    </tr>
-                  {% endif %}
-                {% endfor %}
-
-              <!--  -->
-            </tbody>
-        </table>
+                              
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-  </div>
+            {% endif %}
+          {% endfor %}
+    
+
+    </div>
+          <!-- menus -->
+    </div>
+
+
+
+    </div>
+    </div>

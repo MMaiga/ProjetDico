@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}DICTIONNAIRE{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="{{ asset('bundles/dicdico/css/style.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  {% endblock %}
+</head>
+
+<body>
+
+  <div class="container" style="z-index: 1;max-width: 1500px; width: auto">
+
+      <div id="myCarousel" class="carousel slide" style="">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="active item"><img src="{{ asset('bundles/dicdico/css/assets/images/livre1.jpg') }}" style="width: 100%;" /></div>
+          <div class="item"><img src="{{ asset('bundles/dicdico/css/assets/images/livre4.jpg') }}" style="width: 100%;"/></div>
+          <div class="item"><img src="{{ asset('bundles/dicdico/css/assets/images/livre3.jpg') }}" style="width: 100%;"/></div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+
+    <!--  <h1>Ma plateforme Dictionnaire</h1>
+      <p>
+      Mon Premier projet avec Symfony2 !!!
+    </p>-->
+    </div>
+
+    <div class="container" style="z-index: 1;max-width: 1500px; width: auto">
+    <nav role="navigation" class="navbar navbar-inverse" style="z-index: 2;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Brand</a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav">
+                <li><a href="http://localhost/Symfony/web/app_dev.php/dico/">Home</a></li>
+                <li><a href="http://localhost/Symfony/web/app_dev.php/dico/relations" onclick='Relation()'>Relations</a></li>
+                <li><a href="#" onclick='Type()'>Types</a></li>
+
+            </ul>
+            <div class="container" style="padding-top: 10px;padding-bottom: 10px;z-index: 4;">
+                    <div class="col-sm-6">
+                        <div id="imaginary_container">
+
+                            <div class="input-group stylish-input-group">
+                                <input type="text" class="form-control"  placeholder="Search" id="myTextField">
+
+                                
+                                    <button type="submit" id = 'sub' onclick='search()'>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                
+                            </div>
+                          </div>
+                          <div id="match" class="col-sm-12" style="position:absolute;padding-left: 0px;padding-right: 30px;"></div>
+                      </div>
+
+            	</div>
+
+        </div>
+    </nav>
+</div>
+
+
+    <div class="row"  id="resultats">
+
+          <div id="content" class="col-md-12" >
+            {% block body %}
+            {% endblock %}
+          </div>
+    </div>
+
+
+    <hr>
+
+    <footer>
+      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+    </footer>
+  </div>
+  {% block javascripts %}
+  {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="{{ asset('bundles/dicdico/css/assets/js/autocomplete-Mots.js') }}"></script>
+  <script src="{{ asset('bundles/dicdico/css/assets/js/bootstrap.js') }}"></script>
+  <script>
+    var loader = "{{ asset('bundles/dicdico/css/assets/images/loader-small.png') }}"; //link to the animated loader-small.gif
+    var ROOT_URL = "{{ url('dic_dico_home')}}"; //your root URL, used in autocomplete-countries.js file
+  </script>
+
+  {% endblock %}
+
+
+</body>
+</html>
+
+<!--
+<div class="row">
+      <div class="container" style="margin:0px auto;max-width:1000px;"  >
+        <div class="panel panel-default">
+          <table class="table ">
+            <thead class="thead-inverse">
+              <tr>
+              <th><b>Definition</b></th>
+              </tr>
+            </thead>
+              <tbody>
+              <tr>
+              <td>
+              {% if Definition %}
+                {% for def in Definition %}
+                  <p>{{def|truncate(200, true, '[..]') |raw}}</p>
+                {% endfor %}
+              {% else %}
+                <p><b>Aucune définition correspondante au mot/expression {{WordInfo.name|upper}} </b></p>
+              {% endif %}
+              </td>
+              </tr>
+              </tbody>
+        </table>
+        </div>
+        </div>
+      </div>
+
+
+  <div class="row">
+  <div class="container" style="margin:0px auto;max-width:1000px;" >
+    <div class="panel panel-default">
+        <table class="table table-striped">
+          <thead class="thead-inverse">
+            <tr>
+            <th>Relations</th>
+            </tr>
+          </thead>
+            <tbody>
+              {% for relation in result %}
+                  {% if relation.eltsFound %}
+                    <tr>
+                    <td>
+                    <a href="#"  data-toggle="modal" data-target="#{{relation.name|replace({' ':'-','>':'-','/':'-'})}}">{{relation.name}}</a>
+                      <div class="modal fade" id="{{relation.name|replace({' ':'-','>':'-','/':'-'})}}" role="dialog">
+                        <div class="modal-dialog">
+
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">{{relation.name|upper}}</h4>
+                            </div>
+                            <div class="modal-body">
+                              {% if relation.name != 'raffinement sémantique' %}
+                                {% for word in relation.eltsFound %}
+                                    <a href='#' onclick='replace(this)' id='{{ word }}' >{{ word }}</a>
+                                {% endfor %}
+                              {% else %}
+                                  {% for word in relation.eltsFound %}
+                                    <a href='#' onclick='replace(this)' id='{{ word }}' >
+                                      {{ word |slice(0, (WordInfo.name|length)) }}({{ word |slice((WordInfo.name|length + 1), (word|length)) }})</a>
+                                  {% endfor %}
+                              {% endif %}
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+      </div>
+  </div>
+-->

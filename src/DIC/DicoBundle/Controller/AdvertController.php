@@ -205,6 +205,7 @@ class AdvertController extends Controller
            );
       $content = $this->get('templating')->render('DICDicoBundle:Advert:relations.html.twig', array('relations' =>$rels));
       return new Response($content);
+      
 
     }
     public function typesAction()

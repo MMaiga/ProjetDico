@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
      $("#myTextField").on('keyup', function() { // everytime keyup event
              var input = $(this).val(); // We take the input value
              if ( input.length >= 2 ) { // Minimum characters = 2 (you can change)
@@ -16,7 +16,7 @@ $(document).ready(function(){
                                              $('#myTextField').val($(this).text()); // Update the field with the new element
                                              //$('#sub').click();
                                              search();
-                                             $('#match').text(''); // Clear the <div id="match"></div>
+                                              $('#match').text('');// Clear the <div id="match"></div>
                                      });
                              },
                              error: function(data, errorThrown) { // if error
@@ -27,12 +27,11 @@ $(document).ready(function(){
                      $('#match').text(''); // If less than 2 characters, clear the <div id="match"></div>
              }
      });
- });
 
  function search() {
-
+    $('#match').text('');
     var query=$("#myTextField").val();
-
+    
     var data = {q: query}; // We pass q argument in Ajax
             $.ajax({
                     type: "POST",
@@ -40,13 +39,13 @@ $(document).ready(function(){
                     data: data, // Send dataFields var
                   //  timeout: 8000,
                     success: function(response){ // If success
-                            console.log(response);
-                            $('#resultats').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
+                            console.log('resultats='+response);
+                            $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
 
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
-                            $('#resultats').text(errorThrown);
+                            $('#results').text(errorThrown);
                     }
             });
 
@@ -56,11 +55,29 @@ $(document).ready(function(){
  function Relation() {
 
             $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: ROOT_URL + "relations",
                     success: function(response){ // If success
                             console.log(response);
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
+
+                    },
+                    error: function(data, errorThrown) { // if error
+                            console.log(errorThrown);
+                            $('#results').text(errorThrown);
+                    }
+            });
+
+ }
+ function home() {
+
+            $.ajax({
+                    type: "GET",
+                    url: ROOT_URL,
+                    success: function(response){ // If success
+                            console.log(response);
+                            //return response;
+                            $('#html').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
 
                     },
                     error: function(data, errorThrown) { // if error
@@ -101,7 +118,10 @@ $("input[type='checkbox']").on('click', function(){
             console.log('checked');
            alert('checked');
          } else {
-           console.log('unchecked');
+
            alert('unchecked');
        }
    });
+
+
+$('.nav a').click(function () { $(".navbar-to-collapse").collapse("hide") });

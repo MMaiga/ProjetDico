@@ -36,15 +36,26 @@ Tags: light, white,blog,business,multipurpose,one page, single page, custom-colo
 /*--------------------*/
 
 body,html{
+    background-image: url("assets/images/plancher.jpg") ;
+    height: 500px;
 
-  	overflow-x:hidden;
+    width: 100%;
+    background-repeat: no-repeat;
+
+    background-position: center center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+
+    -o-background-size: cover;
+    background-size: cover;
 }
 body {
-  background-image: url("assets/images/background1.jpg") no-repeat;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	overflow-x: hidden !important;
-	color: #838282;
+	color: #000000;
 }
 
 ul{
@@ -62,9 +73,10 @@ a:focus{
 }
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Raleway', sans-serif;
+  color: #ffffff;
 }
 h2 {
-	color: #fff;
+	color: #ffffff;
 	font-size: 30px;
 	font-weight: 700;
 	line-height: 40px;

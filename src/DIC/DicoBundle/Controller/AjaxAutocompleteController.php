@@ -21,10 +21,10 @@ class AjaxAutocompleteController extends Controller
         $params = ['term' => $term];
         $words = $em->cypherQuery($query,$params);
 
-        $wordList = '<ul id="matchList">';
+        $wordList = '<ul id="matchList" class="search-preview list-group">';
         foreach ($words as $result) {
             $matchStringBold =$result['m']->getproperty('name'); // Replace text field input by bold one
-            $wordList .= '<li style="color: #FFFFFF;" id="'.$result['m']->getproperty('name').'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
+            $wordList .= '<li class="list-group-item" style="height: 30px; padding: 5px 15px;" id="'.$result['m']->getproperty('name').'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
         }
         $wordList .= '</ul>';
 
