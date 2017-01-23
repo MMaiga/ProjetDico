@@ -33,3 +33,7 @@ dic_dico_relations:
 dic_dico_types:
     path:      /types
     defaults:  { _controller: DICDicoBundle:Advert:types }
+
+dic_dico_accueil:
+    path:      /accueil
+    defaults:  { _controller: DICDicoBundle:Advert:accueil }

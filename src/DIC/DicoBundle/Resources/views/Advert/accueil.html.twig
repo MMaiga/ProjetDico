@@ -1,0 +1,23 @@
+<div class="container" style="margin:0px auto;max-width:1000px;" id="results">
+
+  <h1><center>Liste des mots les plus recherchés</center></h1>
+  <hr>
+  <div class="panel panel-default">
+    <table class="table">
+      <thead class="thead-default">
+        <tr>
+        <th>Mots</th>
+        <th>Type</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for word in words %}
+          <tr>
+          <td><a href='#' onclick='replace(this)' id='{{ word['m'].name }}' >{{ word['m'].name }}</a></td>
+          <td>{{ word['m'].typeNode }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>

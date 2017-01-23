@@ -60,12 +60,26 @@ class AdvertController extends Controller
 
         $em = $this->container->get('neo4j.manager');
 
-          $query = 'MATCH (m:Word) RETURN m LIMIT 30';
+          $query = 'MATCH (m:Word) RETURN m LIMIT 20';
 
           $words = $em->cypherQuery($query);
 
           //print_r($users);
           $content = $this->get('templating')->render('DICDicoBundle:Advert:index.html.twig', array('words' =>$words));
+          return new Response($content);
+    }
+
+    public function accueilAction()
+    {
+
+        $em = $this->container->get('neo4j.manager');
+
+          $query = 'MATCH (m:Word) RETURN m LIMIT 20';
+
+          $words = $em->cypherQuery($query);
+
+          //print_r($users);
+          $content = $this->get('templating')->render('DICDicoBundle:Advert:accueil.html.twig', array('words' =>$words));
           return new Response($content);
     }
 
