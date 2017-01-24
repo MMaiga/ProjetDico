@@ -34,23 +34,23 @@
     
     var data = {q: query}; // We pass q argument in Ajax
             $.ajax({
-                    type: "GET",
-                    url: ROOT_URL + "search?q="+data, // call the php file ajax/tuto-autocomplete.php (check the routine we defined)
-                   // data: data, // Send dataFields var
+                    type: "POST",
+                    url: ROOT_URL + "search", // call the php file ajax/tuto-autocomplete.php (check the routine we defined)
+                    data: data, // Send dataFields var
                   //  timeout: 8000,
                     success: function(response){ // If success
                             console.log('resultats='+response);
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
                             $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 0);
+                                }, -200);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
-                             $('html, body').animate({
+                            $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 0);
+                                }, -200);
                     }
             });
 
@@ -67,14 +67,14 @@
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
                             $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 0);
+                                }, -200);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
                             $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 0);
+                                }, -200);
                     }
             });
 
@@ -90,14 +90,14 @@
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
                             $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 0);
+                                }, -200);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
                             $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 0);
+                                }, -200);
                     }
             });
 
