@@ -41,11 +41,16 @@
                     success: function(response){ // If success
                             console.log('resultats='+response);
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
-
+                            $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 2000);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
+                             $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 2000);
                     }
             });
 
