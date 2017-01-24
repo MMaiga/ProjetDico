@@ -1,7 +1,7 @@
 
      $("#myTextField").on('keyup', function() { // everytime keyup event
              var input = $(this).val(); // We take the input value
-             if ( input.length >= 3 ) { // Minimum characters = 2 (you can change)
+             if ( input.length >= 2 ) { // Minimum characters = 2 (you can change)
                      $('#match').html('<img src="' + window.loader + '" />'); // Loader icon apprears in the <div id="match"></div>
                      var data = {input: input}; // We pass input argument in Ajax
                      $.ajax({
@@ -43,14 +43,14 @@
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
                             $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 2000);
+                                }, 0);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
                              $('html, body').animate({
                                     scrollTop: $("#results").offset().top
-                                }, 2000);
+                                }, 0);
                     }
             });
 
@@ -65,11 +65,16 @@
                     success: function(response){ // If success
                             console.log(response);
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
-
+                            $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 0);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
+                            $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 0);
                     }
             });
 
@@ -83,11 +88,16 @@
                             console.log(response);
                             //return response;
                             $('#results').html(response); // Return data (UL list) and insert it in the <div id="match"></div>
-
+                            $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 0);
                     },
                     error: function(data, errorThrown) { // if error
                             console.log(errorThrown);
                             $('#results').text(errorThrown);
+                            $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 0);
                     }
             });
 
